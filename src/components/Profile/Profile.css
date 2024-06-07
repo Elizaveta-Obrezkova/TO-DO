@@ -1,0 +1,221 @@
+.profile {
+    max-width: 1280px;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 74px 0 0;
+}
+
+.page__profile {
+    margin: 0 auto;
+}
+
+.profile__header {
+    font-family: 'Inter', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2083;
+    text-align: center;
+    color: #000;
+    padding: 0;
+    margin: 0;
+}
+
+.edit-form {
+    width: 410px;
+    padding: 106px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+}
+
+.input-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    align-items: center;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.input-container:last-of-type {
+    border: none;
+}
+
+.input-container__title {
+    font-family: 'Inter', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.1818;
+    color: #000;
+    min-width: 141px;
+    min-height: 14px;
+    margin: 0;
+    padding: 17px 0 0;
+}
+
+.edit-form__input {
+    font-family: 'Inter', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.1818;
+    text-align: right;
+    color: #000;
+    border: none;
+    border: none;
+    margin: 0;
+    padding: 17px 0 0;
+    background-color: #FAFAFA;
+}
+
+.edit-form__input:focus {
+    outline: none;
+}
+
+.error-message {
+    width: 100%;
+}
+
+.edit-form__message {
+    width: 100%;
+    min-height: 14px;
+    display: inline-block;
+    border: none;
+    margin: 170px 0 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.1818;
+    color: #EE3465;
+    text-align: center;
+}
+
+.edit-form__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2308;
+    text-align: center;
+    color: #000;
+    padding: 0;
+    margin: 0;
+    transition: opacity 1s ease;
+}
+
+.edit-form__button:first-of-type {
+    margin-top: 20px;
+}
+
+.edit-form__button:hover {
+    opacity: 0.7;
+}
+
+.edit-form__button_type_subbmit {
+    width: 100%;
+    min-height: 45px;
+    background-color: #3456F3;
+    border-radius: 3px;
+    color: #FFF;
+    margin-top: 26px;
+}
+
+.edit-form__button_type_button:last-of-type {
+    font-weight: 500;
+    color: #EE3465;
+    margin-top: 16px;
+}
+
+.edit-form__button_hidden {
+    display: none;
+}
+
+.edit-form__button_inactive {
+    background-color: #F8F8F8;
+    color: #C2C2C2;
+    cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
+        padding: 236px 0 0;
+    }
+
+    .edit-form {
+        padding: 79px 0 0;
+    }
+
+    .edit-form__button:first-of-type {
+        margin-top: 194px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .profile {
+        padding: 70px 0 0;
+    }
+
+    .edit-form {
+        padding: 63px 0 0;
+        width: 260px;
+    }
+
+    .input-container__title {
+        min-width: 130px;
+    }
+
+    .edit-form__input {
+        max-width: 120px;
+    }
+
+    .edit-form__button:first-of-type {
+        margin-top: 363px;
+    }
+
+    .edit-form__button {
+        font-size: 12px;
+        line-height: 1.25;
+    }
+
+}
