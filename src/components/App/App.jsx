@@ -7,6 +7,7 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
+import Calendar from "../Calendar/Calendar";
 import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useEffect } from "react";
@@ -35,9 +36,63 @@ function App() {
   const [errorLogin, setErrorLogin] = React.useState("");
   const [errorRegister, setErrorRegister] = React.useState("");
   const [statusUpdateInfo, setStatusUpdateInfo] = React.useState("");
+  const [year, setYear] = React.useState("");
+  const [monthNumber, setMonthNumber] = React.useState("");
+  const [month, setMonht] = React.useState("");
+  const date = new Date();
+  const dateMonth = date.getMonth();
+  const dateYear = date.getFullYear();
+  const [cards, setCards] = React.useState([]);
+
 
   const history = useHistory();
   const location = useLocation();
+
+  function getDates (y, m) {
+    const firstDayOfMonths = new Date(y, m, 1).getDay();
+    const lastDateOfMonth =  new Date(y, m + 1, 0).getDay();
+    const numberOfDaysInMonths = new Date(y, m + 1, 0).getDate();
+    
+    const arr = [];
+    if (firstDayOfMonths == 0) {
+      for (let i = 0; i < 6; i++) {
+        const item = new Date(y, m, -i).getDate();
+        arr.unshift({day: item, thisMonth: false})
+      }
+    }
+    if (firstDayOfMonths !== 1||0 ) {
+      for (let i = 0; i < firstDayOfMonths - 1; i++) {
+        const item = new Date(y, m, -i).getDate();
+        arr.unshift({day: item, thisMonth: false})
+      }
+    }
+    for (let i = 1; i <= numberOfDaysInMonths; i++){
+        arr.push({day: i, thisMonth: true});
+      }
+
+    if (lastDateOfMonth !== 0)
+      {
+        for (let i = 1; i <= 7 - lastDateOfMonth; i++) {
+          const item = new Date(y, m + 1, i).getDate();
+          arr.push({day: item, thisMonth: false})
+        }
+      }
+      return arr;
+  }
+ 
+  useEffect(() => {
+    const newArr = getDates(dateYear, dateMonth);
+    setCards(newArr);
+    setYear(dateYear);
+    setMonthNumber(dateMonth);
+  }, []);
+
+  useEffect(() => {
+    const months = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
+    setMonht(months[monthNumber])
+    const newArr = getDates(year, monthNumber);
+    setCards(newArr);
+  }, [monthNumber]);
 
   function handleLogin(email, password) {
     return db
@@ -175,6 +230,26 @@ function App() {
     history.push("/");
   }
 
+  function handleNextMonth() {
+    if (monthNumber == 11) {
+      setMonthNumber(0);
+      setYear(year + 1);
+    }
+    else {
+      setMonthNumber(monthNumber + 1);
+    }
+  }
+
+  function handlePreviousMonth() {
+    if (monthNumber == 0) {
+      setMonthNumber(11);
+      setYear(year - 1);
+    }
+    else {
+      setMonthNumber(monthNumber - 1);
+    }
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -186,7 +261,19 @@ function App() {
           </Route>
           <ProtectedRoute path="/calendar" loggedIn={loggedIn}>
             <Header loggedIn={loggedIn} />
-            {<main></main>}
+            <main>
+            <Calendar
+
+                            /* onSelectedCard={handleCardClick} */
+                            cards={cards}
+                            month={month}
+                            year={year}
+                            onNextMonth={handleNextMonth}
+                            onPreviousMonth={handlePreviousMonth}
+                            /* onCardLike={handleCardLike}
+                            onCardDelete={handleCardDelete} */
+                        />
+            </main>
             <Footer />
           </ProtectedRoute>
           <ProtectedRoute path="/profile" loggedIn={loggedIn}>

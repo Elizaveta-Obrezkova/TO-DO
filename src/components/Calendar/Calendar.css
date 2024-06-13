@@ -1,0 +1,137 @@
+.calendar {
+  max-width: 875px;
+}
+
+.page__calendar {
+  margin: 0 auto;
+}
+
+.calendar__header {
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 1.3;
+  margin: 50px 0 70px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.elements {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 50px;
+  grid-auto-rows: 80px;
+  background-color: rgb(60, 60, 239);
+  gap: 2px;
+  margin: 0 auto 50px;
+}
+
+.elements__header{
+  grid-column: span 5;
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 50px;
+  letter-spacing: 3px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.elements__button {
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(60, 60, 239);
+  border: none;
+  cursor: pointer;
+}
+
+.elements__button:hover {
+  background-size: 40px;
+}
+
+.elements__button_direction_previous {
+  background-image: url(../../Images/previous.svg);
+}
+
+.elements__button_direction_next {
+  background-image: url(../../Images/next.svg);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; 
+  height: 1px;
+  margin: -1px; 
+  padding: 0; 
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden; 
+}
+
+
+.elements__column-headings {
+  grid-column: span 7;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+  gap: 2px;
+}
+
+.elements__column-header {
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 940px) {
+  .calendar {
+      max-width: 581px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .calendar {
+      max-width: 280px;
+  }
+}

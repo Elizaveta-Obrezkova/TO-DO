@@ -1,0 +1,32 @@
+.element {
+  background-color: #e3e3e3;
+  overflow: hidden;
+  position: relative;
+  cursor: none;
+  text-align: right;
+  padding: 10px 10px 0 0;
+  color: rgb(111, 111, 111)
+}
+
+.element_active {
+  cursor: pointer;
+  color:black;
+  background-color: #fff;
+}
+
+.element__title {
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
