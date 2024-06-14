@@ -126,12 +126,47 @@
 
 @media screen and (max-width: 940px) {
   .calendar {
+      max-width: 700px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .calendar {
       max-width: 581px;
   }
 }
 
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 640px) {
   .calendar {
-      max-width: 280px;
+      max-width: 400px;
   }
+
+  .calendar__header {
+    font-size: 36px;
+  }
+
+  .elements {
+    grid-template-rows: 50px;
+    grid-auto-rows: 40px;
+  }
+
+  .elements__header{
+    font-size: 24px;
+  }
+
+  .elements__column-header {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (max-width: 420px) {
+  .calendar {
+      max-width: 300px;
+  }
+
+  .elements__column-header {
+    font-size: 16px;
+  }
+
 }

@@ -2,7 +2,6 @@
   background-color: #e3e3e3;
   overflow: hidden;
   position: relative;
-  cursor: none;
   text-align: right;
   padding: 10px 10px 0 0;
   color: rgb(111, 111, 111)
@@ -29,4 +28,18 @@
   line-height: 1.2;
   letter-spacing: 3px;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 640px) {
+  .element__title {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (max-width: 420px) {
+  .element__title {
+    font-size: 16px;
+  }
+
 }
