@@ -21,7 +21,7 @@ function Main(props) {
                 <li className="elements__column-header"><h3>вс</h3></li>
               </ul>
                 {props.cards.reverse().map((item) =>
-                    (<Card card={item} key={item._id} />)
+                    (<Card card={item} key={item.id} onCardClick={item.thisMonth ? props.onSelectedCard : function(){}}/>)
                 )}
             </div>
       </section>

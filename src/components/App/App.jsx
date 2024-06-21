@@ -8,6 +8,7 @@ import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
 import Calendar from "../Calendar/Calendar";
+import TasksPopup from "../TasksPopup/TasksPopup";
 import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useEffect } from "react";
@@ -43,10 +44,12 @@ function App() {
   const dateMonth = date.getMonth();
   const dateYear = date.getFullYear();
   const [cards, setCards] = React.useState([]);
+  const [selectedCard, setSelectedCard] = React.useState({});
 
 
   const history = useHistory();
   const location = useLocation();
+  const months = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
 
   function getDates (y, m) {
     const firstDayOfMonths = new Date(y, m, 1).getDay();
@@ -54,45 +57,48 @@ function App() {
     const numberOfDaysInMonths = new Date(y, m + 1, 0).getDate();
     
     const arr = [];
-    if (firstDayOfMonths == 0) {
+    if (firstDayOfMonths === 0) {
       for (let i = 0; i < 6; i++) {
         const item = new Date(y, m, -i).getDate();
-        arr.unshift({day: item, thisMonth: false})
+        arr.unshift({day: item, thisMonth: false, id: `${item} ${month} ${year}`})
       }
     }
     if (firstDayOfMonths !== 1||0 ) {
       for (let i = 0; i < firstDayOfMonths - 1; i++) {
         const item = new Date(y, m, -i).getDate();
-        arr.unshift({day: item, thisMonth: false})
+        arr.unshift({day: item, thisMonth: false, id: `${item} ${month} ${year}`})
       }
     }
     for (let i = 1; i <= numberOfDaysInMonths; i++){
-        arr.push({day: i, thisMonth: true});
+        arr.push({day: i, thisMonth: true, id: `${i} ${month} ${year}`});
       }
 
     if (lastDateOfMonth !== 0)
       {
         for (let i = 1; i <= 7 - lastDateOfMonth; i++) {
           const item = new Date(y, m + 1, i).getDate();
-          arr.push({day: item, thisMonth: false})
+          arr.push({day: item, thisMonth: false, id: `${item} ${month} ${year}`})
         }
       }
       return arr;
   }
  
   useEffect(() => {
-    const newArr = getDates(dateYear, dateMonth);
-    setCards(newArr);
     setYear(dateYear);
     setMonthNumber(dateMonth);
+    setMonht(months[dateMonth])
+    const newArr = getDates(dateYear, dateMonth);
+    setCards(newArr);
   }, []);
 
   useEffect(() => {
-    const months = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
     setMonht(months[monthNumber])
+  }, [monthNumber]);
+
+  useEffect(() => {
     const newArr = getDates(year, monthNumber);
     setCards(newArr);
-  }, [monthNumber]);
+  }, [month]);
 
   function handleLogin(email, password) {
     return db
@@ -231,7 +237,8 @@ function App() {
   }
 
   function handleNextMonth() {
-    if (monthNumber == 11) {
+    setCards([])
+    if (monthNumber === 11) {
       setMonthNumber(0);
       setYear(year + 1);
     }
@@ -241,7 +248,8 @@ function App() {
   }
 
   function handlePreviousMonth() {
-    if (monthNumber == 0) {
+    setCards([])
+    if (monthNumber === 0) {
       setMonthNumber(11);
       setYear(year - 1);
     }
@@ -249,6 +257,14 @@ function App() {
       setMonthNumber(monthNumber - 1);
     }
   }
+
+  function closePopup() {
+    setSelectedCard({})
+}
+
+function handleCardClick(item) {
+  setSelectedCard(item)
+}
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -264,7 +280,7 @@ function App() {
             <main>
             <Calendar
 
-                            /* onSelectedCard={handleCardClick} */
+                            onSelectedCard={handleCardClick}
                             cards={cards}
                             month={month}
                             year={year}
@@ -275,6 +291,7 @@ function App() {
                         />
             </main>
             <Footer />
+            <TasksPopup card={selectedCard} onClose={closePopup} />
           </ProtectedRoute>
           <ProtectedRoute path="/profile" loggedIn={loggedIn}>
             <Header loggedIn={loggedIn} />
