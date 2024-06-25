@@ -23,6 +23,13 @@
   opacity: 0.5;
 }
 
+.button-done_active {
+  background-image: url(../../Images/done.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+
 .task__text {
   font-family: 'Inter', Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
@@ -56,4 +63,15 @@
 
 .button-delete:hover {
   opacity: 0.6;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; 
+  height: 1px;
+  margin: -1px; 
+  padding: 0; 
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden; 
 }

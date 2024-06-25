@@ -1,6 +1,6 @@
 import React from "react";
 import "./TasksPopup.css";
-import "../Task/Task.css"
+import Task from "../Task/Task"
 
 function TasksPopup(props) {
   const [task, setTask] = React.useState("");
@@ -13,8 +13,12 @@ function TasksPopup(props) {
     e.preventDefault();
 
     props.onAddTask({
-      name: task,
-    });
+      task: task,
+      checked: false,
+      date: props.card.id,
+    })
+
+    setTask("")
   }
 
   return (
@@ -53,40 +57,9 @@ function TasksPopup(props) {
         </form>
         <div className="tasks">
           <h3 className="tasks__header">Задачи дня:</h3>
-          <div className="task">
-            <button
-              type="button"
-              className={
-                props.isDone ? "button-done button-done_active" : "button-done"
-              }
-              aria-label="Сделано"
-              /* onClick={handleTaskDone} */
-            ></button>
-            <p className="task__text">Задача на сегодня</p>
-            <button
-              type="button"
-              className="button-delete"
-              aria-label="Удалить."
-              /* onClick={handleCardDelete} */
-            ></button>
-          </div>
-          <div className="task">
-            <button
-              type="button"
-              className={
-                props.isDone ? "button-done button-done_active" : "button-done"
-              }
-              aria-label="Сделано"
-              /* onClick={handleTaskDone} */
-            ></button>
-            <p className="task__text">Еще одна задача на сегодня, которую надо сделать</p>
-            <button
-              type="button"
-              className="button-delete"
-              aria-label="Удалить."
-              /* onClick={handleCardDelete} */
-            ></button>
-          </div>
+          {props.tasks.map((item) =>
+                    (<Task task={item} key={item.id} />)
+                )}
         </div>
       </div>
     </div>
