@@ -2,6 +2,11 @@ import React from "react";
 import "./Task.css";
 
 function Task(props) {
+
+  function handleTaskDelete() {
+    props.onTaskDelete(props.task);
+}
+
   return (
     <div className="task">
       <button
@@ -15,7 +20,7 @@ function Task(props) {
         type="button"
         className="button-delete"
         aria-label="Удалить."
-        /* onClick={handleCardDelete} */
+        onClick={handleTaskDelete}
       ><span className="visually-hidden">Удалить задачу</span></button>
     </div>
   );

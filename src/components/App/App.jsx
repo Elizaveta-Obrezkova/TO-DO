@@ -419,6 +419,21 @@ function App() {
     tokenCheck();
   }, []);
 
+  function handleTaskDelete(task) {
+    db.collection("users")
+      .doc(currentUser.id)
+      .collection("tasks")
+      .doc(task.id)
+      .delete()
+      .then(() => {
+        console.log("Document successfully deleted!");
+        setTasks((tasks) => tasks.filter((t) => t.id !== task.id));
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -438,8 +453,7 @@ function App() {
                 year={year}
                 onNextMonth={handleNextMonth}
                 onPreviousMonth={handlePreviousMonth}
-                /* onTaskDone={handleTaskDone}
-                            onTaskDelete={handleTaskDelete} */
+                /* onTaskDone={handleTaskDone}*/
               />
             </main>
             <Footer />
@@ -448,6 +462,7 @@ function App() {
               onClose={closePopup}
               onAddTask={handleAddTask}
               tasks={tasksOfDay}
+              onTaskDelete={handleTaskDelete}
             />
           </ProtectedRoute>
           <ProtectedRoute path="/profile" loggedIn={loggedIn}>
