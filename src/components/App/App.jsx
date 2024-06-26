@@ -430,8 +430,58 @@ function App() {
         setTasks((tasks) => tasks.filter((t) => t.id !== task.id));
       })
       .catch((error) => {
-        console.error("Error removing document: ", error);
+        console.log("Error removing document: ", error);
       });
+  }
+
+  function handleTaskDone(task) {
+    if (!task.checked) {
+      db.collection("users")
+        .doc(currentUser.id)
+        .collection("tasks")
+        .doc(task.id)
+        .update({
+          checked: true,
+        })
+        .then(() => {
+          console.log("Document successfully updated!");
+          const newTask = {
+            id: task.id,
+            task: task.task,
+            checked: true,
+            date: task.date,
+          };
+          setTasks((tasks) =>
+            tasks.map((t) => (t.id === task.id ? newTask : t))
+          );
+        })
+        .catch((error) => {
+          console.log("Error updating document: ", error);
+        });
+    } else {
+      db.collection("users")
+        .doc(currentUser.id)
+        .collection("tasks")
+        .doc(task.id)
+        .update({
+          checked: false,
+        })
+        .then(() => {
+          console.log("Document successfully updated!");
+          const newTask = {
+            id: task.id,
+            task: task.task,
+            checked: false,
+            date: task.date,
+          };
+          setTasks((tasks) =>
+            tasks.map((t) => (t.id === task.id ? newTask : t))
+          );
+        })
+        .catch((error) => {
+          console.log("Error updating document: ", error);
+        });
+    }
   }
 
   return (
@@ -453,7 +503,6 @@ function App() {
                 year={year}
                 onNextMonth={handleNextMonth}
                 onPreviousMonth={handlePreviousMonth}
-                /* onTaskDone={handleTaskDone}*/
               />
             </main>
             <Footer />
@@ -463,6 +512,7 @@ function App() {
               onAddTask={handleAddTask}
               tasks={tasksOfDay}
               onTaskDelete={handleTaskDelete}
+              onTaskDone={handleTaskDone}
             />
           </ProtectedRoute>
           <ProtectedRoute path="/profile" loggedIn={loggedIn}>

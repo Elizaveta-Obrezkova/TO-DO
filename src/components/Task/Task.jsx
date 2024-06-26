@@ -7,13 +7,17 @@ function Task(props) {
     props.onTaskDelete(props.task);
 }
 
+function handleTaskDone() {
+  props.onTaskDone(props.task);
+}
+
   return (
     <div className="task">
       <button
         type="button"
         className={props.task.checked ? "button-done button-done_active" : "button-done"}
         aria-label="Сделано"
-        /* onClick={handleTaskDone} */
+        onClick={handleTaskDone}
       ><span className="visually-hidden">Изменить статус выполнения задачи</span></button>
       <p className="task__text">{props.task.task}</p>
       <button

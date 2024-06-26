@@ -58,7 +58,7 @@ function TasksPopup(props) {
         <div className="tasks">
           <h3 className="tasks__header">Задачи дня:</h3>
           {props.tasks.map((item) =>
-                    (<Task task={item} key={item.id} onTaskDelete={props.onTaskDelete}/>)
+                    (<Task task={item} key={item.id} onTaskDelete={props.onTaskDelete} onTaskDone={props.onTaskDone}/>)
                 )}
         </div>
       </div>
