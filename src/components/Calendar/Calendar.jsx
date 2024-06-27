@@ -47,7 +47,7 @@ function Main(props) {
             <h3>вс</h3>
           </li>
         </ul>
-        {props.cards.reverse().map((item) => (
+        {props.cards.map((item) => (
           <Card
             card={item}
             key={item.id}
