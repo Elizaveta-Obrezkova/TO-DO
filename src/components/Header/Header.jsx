@@ -21,7 +21,7 @@ function Header(props) {
 
     return (
         <header className={location.pathname !== '/' ? "header page__header" : "header page__header header_theme_grey"}>
-            <Link to="/" className="header__link"><img src={logo} className="logo" alt="Логотип учебного проекта Яндекс.Практикум х BeatFilm." /></Link>
+            <Link to="/calendar" className="header__link"><img src={logo} className="logo" alt="Логотип учебного проекта Яндекс.Практикум х BeatFilm." /></Link>
             {props.loggedIn ?
                 (<>
                     <button type="button" className="header__button" aria-label="Аккаунт."><Link to="/profile" className="header__link">Аккаунт</Link></button>

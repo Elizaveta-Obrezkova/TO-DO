@@ -48,6 +48,7 @@ function App() {
   const dateYear = date.getFullYear();
   const [cards, setCards] = React.useState([]);
   const [selectedCard, setSelectedCard] = React.useState({});
+  const [isTasksPopupOpen, openTasksPopup] = React.useState(false);
   const history = useHistory();
   const location = useLocation();
   const months = [
@@ -311,6 +312,7 @@ function App() {
 
   function closePopup() {
     setSelectedCard({});
+    openTasksPopup(false);
   }
 
   function handleCardClick(item) {
@@ -484,6 +486,10 @@ function App() {
     }
   }
 
+  function handleOpenTasksPopupClick() {
+    openTasksPopup(true)
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -503,6 +509,8 @@ function App() {
                 year={year}
                 onNextMonth={handleNextMonth}
                 onPreviousMonth={handlePreviousMonth}
+                onTasksPopup={handleOpenTasksPopupClick}
+                tasks={tasks}
               />
             </main>
             <Footer />
@@ -510,9 +518,11 @@ function App() {
               card={selectedCard}
               onClose={closePopup}
               onAddTask={handleAddTask}
-              tasks={tasksOfDay}
+              tasksOfDay={tasksOfDay}
               onTaskDelete={handleTaskDelete}
               onTaskDone={handleTaskDone}
+              tasks={tasks}
+              isOpen={isTasksPopupOpen}
             />
           </ProtectedRoute>
           <ProtectedRoute path="/profile" loggedIn={loggedIn}>

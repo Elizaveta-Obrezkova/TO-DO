@@ -124,15 +124,47 @@
   background-color: #fff;
 }
 
+.calendar__button {
+  background-color: rgb(60, 60, 239);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-align: center;
+  color: white;
+  width: 875px;
+  min-height: 40px;
+}
+
 @media screen and (max-width: 940px) {
   .calendar {
       max-width: 700px;
+  }
+
+  .calendar__button {
+    width: 700px;
   }
 }
 
 @media screen and (max-width: 760px) {
   .calendar {
       max-width: 581px;
+  }
+
+  .calendar__button {
+    width: 581px;
   }
 }
 
@@ -158,6 +190,11 @@
     font-size: 20px;
   }
 
+  .calendar__button {
+    width: 400px;
+    font-size: 16px;
+  }
+
 }
 
 @media screen and (max-width: 420px) {
@@ -169,4 +206,8 @@
     font-size: 16px;
   }
 
+  .calendar__button {
+    width: 300px;
+    font-size: 14px;
+  }
 }

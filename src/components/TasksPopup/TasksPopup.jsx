@@ -22,7 +22,7 @@ function TasksPopup(props) {
   }
 
   return (
-    <div className={props.card.id ? `popup popup_opened` : `popup`}>
+    <div className={props.card.id||props.isOpen ? `popup popup_opened` : `popup`}>
       <div className="popup__container">
         <button
           type="button"
@@ -30,8 +30,9 @@ function TasksPopup(props) {
           aria-label="Закрыть."
           onClick={props.onClose}
         ></button>
-        <h2 className="photo-card__title">{props.card.id}</h2>
-        <form
+        {props.card.id && <h2 className="photo-card__title">{props.card.id}</h2>
+        }
+        {props.card.id && <form
           name="add-task-form"
           className="popup__form"
           onSubmit={handleAddTaskSubmit}
@@ -54,12 +55,14 @@ function TasksPopup(props) {
           <button type="submit" className="popup__button_add">
             <span className="visually-hidden">Добавить задачу</span>
           </button>
-        </form>
+        </form>}
+        <h3 className="tasks__header">{props.card.id ? "Задачи дня:" : "Все задачи"}</h3>
         <div className="tasks">
-          <h3 className="tasks__header">Задачи дня:</h3>
-          {props.tasks.map((item) =>
+          {props.card.id ? props.tasksOfDay.map((item) =>
                     (<Task task={item} key={item.id} onTaskDelete={props.onTaskDelete} onTaskDone={props.onTaskDone}/>)
-                )}
+                ): props.tasks.map((item) =>
+                  (<Task task={item} key={item.id} onTaskDelete={props.onTaskDelete} onTaskDone={props.onTaskDone}/>)
+              )}
         </div>
       </div>
     </div>

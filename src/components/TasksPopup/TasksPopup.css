@@ -151,8 +151,9 @@
 }
 
 .tasks {
-  min-height: 300px;
+  height: 300px;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .tasks__header {
