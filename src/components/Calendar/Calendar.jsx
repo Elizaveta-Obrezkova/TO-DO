@@ -55,7 +55,7 @@ function Main(props) {
           />
         ))}
       </div>
-      {props.tasks && <button
+      {props.tasks[0] && <button
         type="button"
         className="calendar__button"
         onClick={props.onTasksPopup}
