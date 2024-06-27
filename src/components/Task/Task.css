@@ -52,6 +52,8 @@
   background-image: url(../../Images/delete.svg);
   background-size: 25px;
   background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 25px;
   height: 25px;
   border: none;
@@ -74,4 +76,34 @@
   border: 0;
   clip: rect(0 0 0 0);
   overflow: hidden; 
+}
+
+@media screen and (max-width: 590px) {
+  .task {
+    gap: 10px;
+    min-height: 30px;
+    padding: 0 10px 5px;
+  }
+  
+  .button-done {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+  
+  .button-done_active {
+    background-size: 17px;
+  }
+  
+  .task__text {
+    font-size: 14px;
+    width: 200px;
+    text-align: left;
+  }
+  
+  .button-delete {
+    background-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
 }

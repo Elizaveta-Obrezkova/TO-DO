@@ -78,7 +78,7 @@
     gap: 20px;
 }
 
-.popup__button {
+.popup__button_add {
   width: 40px;
   height: 40px;
   background-color: rgb(60, 60, 239);
@@ -186,13 +186,32 @@
     right: 0;
 }
 
-.popup__button {
+.photo-card__title {
+  margin: 30px 0 20px;
+  font-size: 24px;
+}
+
+.popup__form{
+  padding: 0 10px;
+  gap: 10px;
+}
+
+.popup__button_add {
   font-size: 14px;
   line-height: 1.21423;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  background-size: 15px;
 }
 
 .input-container {
   width: 238px;
+}
+
+.tasks__header {
+  font-size: 20px;
+  margin: 5px 0 10px;
 }
 }
 

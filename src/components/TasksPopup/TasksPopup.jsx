@@ -51,7 +51,7 @@ function TasksPopup(props) {
             />
             <span id="error-title-place" className="error-message"></span>
           </div>
-          <button type="submit" className="popup__button">
+          <button type="submit" className="popup__button_add">
             <span className="visually-hidden">Добавить задачу</span>
           </button>
         </form>
